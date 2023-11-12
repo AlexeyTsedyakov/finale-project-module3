@@ -11,4 +11,9 @@ public class Scene {
     boolean isDeath;
     boolean isWin;
     List<Choice> choices;
+
+    public int getChoiceIndex(Choice choice) {
+        return choices.indexOf(choice);
+    }
 }
+
