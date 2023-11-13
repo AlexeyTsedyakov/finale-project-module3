@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/styles.css" />">
 </head>
 <body>
-<h2>${scene.text}</h2>
+<h3>${scene.text}</h3>
 <br>
 <form>
     <c:forEach var="choice" items="${scene.choices}">
@@ -18,7 +18,6 @@
             <label for="choice${scene.getChoiceIndex(choice)}">${choice.text}</label>
         </div>
     </c:forEach>
-    <br>
     <div>
         <button type="submit">Выбрать</button>
     </div>

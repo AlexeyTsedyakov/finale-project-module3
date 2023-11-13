@@ -34,7 +34,9 @@ public class LogicServlet extends HttpServlet {
         }
 
         session.setAttribute("scene", nextScene);
-        if (checkDeathOrWin(nextScene, request, response)) {
+        if (checkDeathOrWin(nextScene, session)) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/end.jsp");
+            dispatcher.forward(request, response);
             return;
         }
 
@@ -56,10 +58,10 @@ public class LogicServlet extends HttpServlet {
         return scene;
     }
 
-    private boolean checkDeathOrWin(Scene scene, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private boolean checkDeathOrWin(Scene scene, HttpSession session) throws ServletException, IOException {
         if (scene.isDeath() || scene.isWin()) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/end.jsp");
-            dispatcher.forward(request, response);
+            session.setAttribute("isDeath", scene.isDeath());
+            session.setAttribute("isWin", scene.isWin());
             return true;
         } else {
             return false;

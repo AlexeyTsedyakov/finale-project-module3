@@ -9,8 +9,11 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/styles.css" />">
 </head>
 <body>
-<c:if test="${scene.isDeath()}">
+<c:if test="${sessionScope.isDeath}">
     <h1>Конец игры!</h1>
+</c:if>
+<c:if test="${sessionScope.isWin}">
+    <h1>Победа!</h1>
 </c:if>
 <p>${scene.text}</p>
 <br>
