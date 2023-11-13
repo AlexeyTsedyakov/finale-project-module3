@@ -19,14 +19,12 @@ import java.util.Map;
 
 @Getter
 public class QuestGame {
-    private Scene currentScene;
     private final Map<String, Scene> sceneMap;
 
     private QuestGame() {
         sceneMap = new HashMap<>();
         try {
             initializeSceneMap();
-            setStartScene();
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -85,25 +83,6 @@ public class QuestGame {
             Scene scene = gson.fromJson(fileReader, Scene.class);
             sceneMap.put(scene.getName(), scene);
         }
-    }
-
-    private void setStartScene() throws FileNotFoundException {
-        Scene startScene = sceneMap.get("startScene");
-
-        if (startScene == null) {
-            throw new FileNotFoundException("Not found start scene!");
-        }
-
-        currentScene = startScene;
-    }
-
-    public Scene getStartScene() {
-        Scene startScene = sceneMap.get("startScene");
-        if (startScene == null) {
-            throw new RuntimeException("Not found start scene!");
-        }
-
-        return startScene;
     }
 
     public Scene getScene(String sceneName) {

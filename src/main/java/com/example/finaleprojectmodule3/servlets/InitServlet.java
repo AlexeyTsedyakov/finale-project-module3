@@ -2,6 +2,7 @@ package com.example.finaleprojectmodule3.servlets;
 
 import com.example.finaleprojectmodule3.game.QuestGame;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "initServlet", urlPatterns = {"/", "/start"})
+@WebServlet(name = "initServlet", urlPatterns = (""))
 public class InitServlet extends HttpServlet {
-    private QuestGame questGame;
-
-    @Override
-    public void init() throws ServletException {
-        questGame = QuestGame.getInstance();
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.setAttribute("currentScene", questGame.getStartScene());
-        response.sendRedirect("start.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/start.jsp");
+        dispatcher.forward(request, response);
     }
 }

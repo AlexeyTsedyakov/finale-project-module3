@@ -1,0 +1,19 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="scene" scope="session" type="com.example.finaleprojectmodule3.game.Scene"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quest game - end</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/static/styles.css" />">
+</head>
+<body>
+<c:if test="${scene.isDeath()}">
+    <h1>Конец игры!</h1>
+</c:if>
+<p>${scene.text}</p>
+<br>
+<button onclick="window.location='/quest-game?nextScene=startScene'">Начать заново</button>
+</body>
+</html>
