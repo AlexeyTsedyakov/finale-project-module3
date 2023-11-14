@@ -8,13 +8,15 @@
     <title>Quest game</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/styles.css" />">
 </head>
+
 <body>
-<h3>${scene.text}</h3>
+<p>${scene.text}</p>
 <br>
 <form>
     <c:forEach var="choice" items="${scene.choices}">
         <div>
-            <input type="radio" id="choice${scene.getChoiceIndex(choice)}" name="nextScene" value="${choice.nextScene}" required/>
+            <input type="radio" id="choice${scene.getChoiceIndex(choice)}" name="nextScene" value="${choice.nextScene}"
+                   required/>
             <label for="choice${scene.getChoiceIndex(choice)}">${choice.text}</label>
         </div>
     </c:forEach>

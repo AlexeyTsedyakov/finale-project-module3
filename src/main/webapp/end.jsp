@@ -8,6 +8,7 @@
     <title>Quest game - end</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/styles.css" />">
 </head>
+
 <body>
 <c:if test="${sessionScope.isDeath}">
     <h1>Конец игры!</h1>

@@ -6,16 +6,41 @@
 <head>
     <title>Quest game - start</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/styles.css" />">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
+
 <body>
 <h1>Пролог</h1>
 <p>Эпоха освоения космоса. Вы, отважный космонавт, отправились в путешествие на планету Небесная Эклипса, обладающую
     уникальной атмосферой и загадочными ресурсами. Ваша миссия - освоить эти ресурсы для блага вашей цивилизации.
     Однако, по прибытии, неудача заставляет вас совершить аварийную посадку. Система навигации, подвергшись странному
     воздействию планетарных полей, выходит из строя, и ваш корабль, потеряв ориентацию, несется к поверхности
-    в неконтролируемом свободном падении. Невозможно предвидеть, что вас ожидает в этом загадочном и непостижимом уголке космоса.</p>
+    в неконтролируемом свободном падении. Невозможно предвидеть, что вас ожидает в этом загадочном и непостижимом уголке
+    космоса.</p>
 <br>
-<input value="text">
-<button onclick="window.location='/quest-game?nextScene=startScene'">Начать игру</button>
+<form>
+    <div>
+        <input type="text" id="playerName" required>
+        <label for="playerName">Представьтесь</label>
+    </div>
+    <div>
+        <button type="submit">Начать игру</button>
+    </div>
+</form>
+
+<script>
+    $('form').on("submit", function (event) {
+        let playerName = $("#playerName").value;
+        let params = {playerName: playerName};
+        console.log('submit')
+        $.ajax({
+            url: '/' + params,
+            type: 'POST',
+            contentType: 'application/json;charset=UTF-8',
+            async: false
+        });
+        event.preventDefault();
+    })
+</script>
 </body>
 </html>
