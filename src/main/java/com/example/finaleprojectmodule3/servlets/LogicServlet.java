@@ -5,11 +5,14 @@ import com.example.finaleprojectmodule3.game.Scene;
 import com.example.finaleprojectmodule3.servlets.exceptions.BadRequestException;
 import com.example.finaleprojectmodule3.servlets.exceptions.NotFoundException;
 
-import java.io.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @WebServlet(name = "logicServlet", value = "/quest-game")
 public class LogicServlet extends HttpServlet {
@@ -58,7 +61,7 @@ public class LogicServlet extends HttpServlet {
         return scene;
     }
 
-    private boolean checkDeathOrWin(Scene scene, HttpSession session) throws ServletException, IOException {
+    private boolean checkDeathOrWin(Scene scene, HttpSession session) {
         if (scene.isDeath() || scene.isWin()) {
             session.setAttribute("isDeath", scene.isDeath());
             session.setAttribute("isWin", scene.isWin());

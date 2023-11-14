@@ -24,5 +24,6 @@
         <button type="submit">Выбрать</button>
     </div>
 </form>
+<p>${sessionScope.playerName}</p>
 </body>
 </html>

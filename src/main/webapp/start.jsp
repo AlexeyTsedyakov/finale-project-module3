@@ -30,14 +30,20 @@
 
 <script>
     $('form').on("submit", function (event) {
-        let playerName = $("#playerName").value;
-        let params = {playerName: playerName};
+        let playerName = $("#playerName").val();
+        let body = {
+            playerName: playerName
+        };
         console.log('submit')
         $.ajax({
-            url: '/' + params,
+            url: '/',
             type: 'POST',
             contentType: 'application/json;charset=UTF-8',
-            async: false
+            data: JSON.stringify(body),
+            async: false,
+            success: function (data) {
+                window.location.href = data.redirect;
+            },
         });
         event.preventDefault();
     })

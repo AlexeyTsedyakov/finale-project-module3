@@ -1,7 +1,9 @@
 package com.example.finaleprojectmodule3.servlets;
 
-import com.example.finaleprojectmodule3.game.QuestGame;
 import com.example.finaleprojectmodule3.servlets.exceptions.BadRequestException;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +23,7 @@ public class InitServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
 
         String playerName;
@@ -33,14 +35,30 @@ public class InitServlet extends HttpServlet {
         }
 
         session.setAttribute("playerName", playerName);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(getResponseBody());
     }
 
     private String getPlayerName(HttpServletRequest request) {
-        String playerName = request.getParameter("playerName");
-        if (playerName == null) {
-            throw new BadRequestException("Bad Request: playerName parameter is missing.");
+        Gson gson = new Gson();
+        JsonObject jsonObject;
+        try {
+            jsonObject = gson.fromJson(request.getReader(), JsonObject.class);
+        } catch (IOException e) {
+            throw new BadRequestException(e.getMessage());
+        }
+        JsonElement jsonElement = jsonObject.get("playerName");
+        if (jsonElement == null || jsonElement.isJsonNull()) {
+            throw new BadRequestException("Bad Request: field playerName is missing.");
         }
 
-        return playerName;
+        return jsonElement.getAsString();
+    }
+
+    private String getResponseBody() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("redirect", "/quest-game?nextScene=startScene");
+        return new Gson().toJson(jsonObject);
     }
 }
