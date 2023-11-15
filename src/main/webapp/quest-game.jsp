@@ -10,7 +10,10 @@
 </head>
 
 <body>
-<p>${scene.text}</p>
+<br>
+<c:forEach var="paragraph" items="${scene.paragraphs}">
+    <p>${paragraph}</p>
+</c:forEach>
 <br>
 <form>
     <c:forEach var="choice" items="${scene.choices}">

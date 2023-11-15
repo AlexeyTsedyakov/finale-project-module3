@@ -5,8 +5,12 @@ body {
     max-width: 60%;
 }
 
-h3 {
+h1 {
     color: #333;
+}
+
+p {
+    font-size: large;
 }
 
 form {
@@ -52,4 +56,5 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
 

@@ -16,7 +16,9 @@
 <c:if test="${sessionScope.isWin}">
     <h1>Победа!</h1>
 </c:if>
-<p>${scene.text}</p>
+<c:forEach var="paragraph" items="${scene.paragraphs}">
+    <p>${paragraph}</p>
+</c:forEach>
 <br>
 <button onclick="window.location='/restart'">Начать заново</button>
 </body>
