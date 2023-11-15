@@ -33,8 +33,13 @@ public class InitServlet extends HttpServlet {
             response.sendError(400, e.getMessage());
             return;
         }
+        String ipAddress = getIpAddress(request);
+        int gameCount = 1;
 
         session.setAttribute("playerName", playerName);
+        session.setAttribute("ipAddress", ipAddress);
+        session.setAttribute("gameCount", gameCount);
+
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(getResponseBody());
@@ -54,6 +59,15 @@ public class InitServlet extends HttpServlet {
         }
 
         return jsonElement.getAsString();
+    }
+
+    private String getIpAddress(HttpServletRequest request) {
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+
+        return ipAddress;
     }
 
     private String getResponseBody() {

@@ -4,6 +4,9 @@ import com.example.finaleprojectmodule3.game.QuestGame;
 import com.example.finaleprojectmodule3.game.Scene;
 import com.example.finaleprojectmodule3.servlets.exceptions.BadRequestException;
 import com.example.finaleprojectmodule3.servlets.exceptions.NotFoundException;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 @WebServlet(name = "logicServlet", value = "/quest-game")
 public class LogicServlet extends HttpServlet {

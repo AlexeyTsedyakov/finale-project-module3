@@ -18,6 +18,6 @@
 </c:if>
 <p>${scene.text}</p>
 <br>
-<button onclick="window.location='/quest-game?nextScene=startScene'">Начать заново</button>
+<button onclick="window.location='/restart'">Начать заново</button>
 </body>
 </html>

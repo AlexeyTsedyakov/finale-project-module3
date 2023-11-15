@@ -24,6 +24,10 @@
         <button type="submit">Выбрать</button>
     </div>
 </form>
-<p>${sessionScope.playerName}</p>
+<br>
+<b>Статистика: </b>
+<div>IP address: ${sessionScope.ipAddress} </div>
+<div>Имя в игре: ${sessionScope.playerName}</div>
+<div>Количество игр: ${sessionScope.gameCount}</div>
 </body>
 </html>
