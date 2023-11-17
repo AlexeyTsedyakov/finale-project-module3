@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,10 +66,10 @@ class UtilTest {
         Choice choice = new Choice(choiceName, nextScene);
 
         String sceneName = "goodScene";
-        List<String> paragraphs = Arrays.asList("test");
+        List<String> paragraphs = List.of("test");
         boolean isDeath = false;
         boolean isWin = false;
-        List<Choice> choices = Arrays.asList(choice);
+        List<Choice> choices = List.of(choice);
 
         return new Scene(sceneName, paragraphs, isDeath, isWin, choices);
     }
