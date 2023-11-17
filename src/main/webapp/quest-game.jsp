@@ -18,7 +18,7 @@
 <form>
     <c:forEach var="choice" items="${scene.choices}">
         <div>
-            <input type="radio" id="choice${scene.getChoiceIndex(choice)}" name="nextScene" value="${choice.nextScene}"
+            <input type="radio" id="choice${scene.getChoiceIndex(choice)}" name="scene" value="${choice.nextScene}"
                    required/>
             <label for="choice${scene.getChoiceIndex(choice)}">${choice.text}</label>
         </div>

@@ -7,7 +7,7 @@ import java.util.List;
 @Value
 public class Scene {
     String name;
-    String[] paragraphs;
+    List<String> paragraphs;
     boolean isDeath;
     boolean isWin;
     List<Choice> choices;

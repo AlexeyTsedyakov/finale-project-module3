@@ -1,0 +1,10 @@
+{
+  "name": "badScene",
+  "paragraphs": "It should be an string list, but it`s single string",
+  "choices": [
+    {
+      "text": "test",
+      "nextScene": "test"
+    }
+  ]
+}

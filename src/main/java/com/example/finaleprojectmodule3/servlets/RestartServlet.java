@@ -19,7 +19,7 @@ public class RestartServlet extends HttpServlet {
         session.setAttribute("isDeath", false);
         session.setAttribute("isWin", false);
 
-        response.sendRedirect("/quest-game?nextScene=startScene");
+        response.sendRedirect("/quest-game?scene=startScene");
     }
 
     private int getGameCount(HttpSession session) {

@@ -72,7 +72,7 @@ public class InitServlet extends HttpServlet {
 
     private String getResponseBody() {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("redirect", "/quest-game?nextScene=startScene");
+        jsonObject.addProperty("redirect", "/quest-game?scene=startScene");
         return new Gson().toJson(jsonObject);
     }
 }

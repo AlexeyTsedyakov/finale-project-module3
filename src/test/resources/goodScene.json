@@ -1,0 +1,12 @@
+{
+  "name": "goodScene",
+  "paragraphs": [
+    "test"
+  ],
+  "choices": [
+    {
+      "text": "test",
+      "nextScene": "test"
+    }
+  ]
+}
