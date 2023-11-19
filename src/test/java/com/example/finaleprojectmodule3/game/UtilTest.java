@@ -16,23 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class UtilTest {
     @Test
     void getResourcePath_givenBadName_returnException() {
-        String fileName = "nonexistentScene";
-        String folderName = "nonexistentFolder";
-        String messageForFile = "File/directory not found: nonexistentScene is missing in resources folder!";
-        String messageForFolder = "File/directory not found: nonexistentFolder is missing in resources folder!";
-
-        assertAll("Grouped asserts for Util method getResourcePath()",
-                () -> {
-                    FileNotFoundException exception = assertThrows(FileNotFoundException.class,
-                            () -> Util.getResourcePath(fileName));
-                    assertEquals(messageForFile, exception.getMessage());
-                },
-                () -> {
-                    FileNotFoundException exception = assertThrows(FileNotFoundException.class,
-                            () -> Util.getResourcePath(folderName));
-                    assertEquals(messageForFolder, exception.getMessage());
-                }
-        );
+        String name = "nonexistentFolder";
+        String message = "File/directory not found: nonexistentFolder is missing in resources!";
+        FileNotFoundException exception = assertThrows(FileNotFoundException.class, () -> Util.getResourcePath(name));
+        assertEquals(message, exception.getMessage());
     }
 
     @Test

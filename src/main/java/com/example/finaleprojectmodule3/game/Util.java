@@ -29,7 +29,7 @@ public class Util {
         URL storylinesURL = classLoader.getResource(name);
 
         if (storylinesURL == null) {
-            throw new FileNotFoundException("File/directory not found: " + name + " is missing in resources folder!");
+            throw new FileNotFoundException("File/directory not found: " + name + " is missing in resources!");
         }
 
         return Path.of(storylinesURL.toURI());
